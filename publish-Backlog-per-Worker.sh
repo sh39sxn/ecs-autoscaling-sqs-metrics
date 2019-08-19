@@ -1,13 +1,13 @@
 #!/bin/bash
 
-AWS_ACCOUNT_ID=${1:-eu-central-1}
-SQS_QUEUE_NAME=${2:-eu-central-1}
-ECS_CLUSTER=${3:-eu-central-1}
-ECS_SERVICE=${4:-eu-central-1}
-CW_METRIC=${5:-eu-central-1}
-CW_NAMESPACE=${6:-eu-central-1}
-CW_DIMENSION_NAME=${7:-eu-central-1}
-CW_DIMENSION_VALUE=${8:-eu-central-1}
+AWS_ACCOUNT_ID=${1:-123456789}
+SQS_QUEUE_NAME=${2:-My-SQS-Queue}
+ECS_CLUSTER=${3:-My-ECS-Cluster}
+ECS_SERVICE=${4:-My-ECS-Service}
+CW_METRIC=${5:-BacklogPerECSTask}
+CW_NAMESPACE=${6:-ECS-SQS-Autoscaling}
+CW_DIMENSION_NAME=${7:-SQS-Queue}
+CW_DIMENSION_VALUE=${8:-My-SQS-Queue}
 
 ApproximateNumberOfMessages=$(aws sqs get-queue-attributes --queue-url https://sqs.$AWS_DEFAULT_REGION.amazonaws.com/$AWS_ACCOUNT_ID/$SQS_QUEUE_NAME --attribute-names All | jq -r '.[] | .ApproximateNumberOfMessages')
 echo "ApproximateNumberOfMessages: " $ApproximateNumberOfMessages

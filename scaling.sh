@@ -2,13 +2,13 @@
 
 LATENCY=${1:-20} # maximum allowed latency (seconds) for processing a message
 PROCESSING_TIME=${2:-2}  # average number of seconds to process an image
-ECS_CLUSTER=${3:-eu-central-1}
-ECS_SERVICE=${4:-eu-central-1}
-CW_METRIC=${5:-eu-central-1}
-CW_NAMESPACE=${6:-eu-central-1}
-CW_DIMENSION_NAME=${7:-eu-central-1}
-CW_DIMENSION_VALUE=${8:-eu-central-1}
-MAX_LIMIT_NUMBER_QUEUE_WORKERS=${9:-eu-central-1}
+ECS_CLUSTER=${3:-My-ECS-Cluster}
+ECS_SERVICE=${4:-My-ECS-Service}
+CW_METRIC=${5:-BacklogPerECSTask}
+CW_NAMESPACE=${6:-ECS-SQS-Autoscaling}
+CW_DIMENSION_NAME=${7:-SQS-Queue}
+CW_DIMENSION_VALUE=${8:-My-SQS-Queue}
+MAX_LIMIT_NUMBER_QUEUE_WORKERS=${9:-200}
 
 ceil() {
   if [[ "$1" =~ ^[0-9]+$ ]]
