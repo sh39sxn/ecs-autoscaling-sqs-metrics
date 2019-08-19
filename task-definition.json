@@ -1,0 +1,70 @@
+{
+    "family": "queue-worker-autoscaling",
+    "networkMode": "bridge",
+    "taskRoleArn": "arn:aws:iam::123456789:role/ecsTaskRole",
+    "containerDefinitions": [
+        {
+            "name": "cronjob",
+            "image": "sh39sxn/ecs-autoscaling-sqs-metrics:latest",
+            "memoryReservation": 256,
+            "cpu": 512,
+            "essential": true,
+            "portMappings": [{
+                "hostPort": 0,
+                "containerPort": 8080,
+                "protocol": "tcp"
+            }],
+            "environment": [{
+                "name": "AWS_DEFAULT_REGION",
+                "value": "eu-central-1"
+            },{
+                "name": "AWS_ACCESS_KEY_ID",
+                "value": "XXX"
+            },{
+                "name": "AWS_SECRET_ACCESS_KEY",
+                "value": "XXX"
+            },{
+                "name": "AWS_ACCOUNT_ID",
+                "value": "123456789"
+            },{
+                "name": "SQS_QUEUE_NAME",
+                "value": "My-SQS-Queue"
+            },{
+                "name": "LATENCY",
+                "value": "20"
+            },{
+                "name": "PROCESSING_TIME",
+                "value": "2"
+            },{
+                "name": "ECS_CLUSTER",
+                "value": "MY-ECS-CLUSTER"
+            },{
+                "name": "ECS_SERVICE",
+                "value": "My-QUEUE-WORKER-SERVICE"
+            },{
+                "name": "CW_METRIC",
+                "value": "BacklogPerECSTask"
+            },{
+                "name": "CW_NAMESPACE",
+                "value": "ECS-SQS-Autoscaling"
+            },{
+                "name": "CW_DIMENSION_NAME",
+                "value": "SQS-Queue"
+            },{
+                "name": "CW_DIMENSION_VALUE",
+                "value": "My-SQS-Queue"
+            },{
+                "name": "MAX_LIMIT_NUMBER_QUEUE_WORKERS",
+                "value": "200"
+            }],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                  "awslogs-group": "/ecs/Queue-Worker-Autoscaling",
+                  "awslogs-region": "eu-central-1",
+                  "awslogs-stream-prefix": "ecs"
+                }
+              }
+        }
+    ]
+}

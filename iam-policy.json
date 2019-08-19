@@ -1,0 +1,32 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:UpdateService",
+                "ecs:DescribeServices",
+                "sqs:GetQueueAttributes"
+            ],
+            "Resource": [
+                "arn:aws:ecs:eu-central-1:123456789:service/My-ECS-Cluster/My-ECS-Service",
+                "arn:aws:sqs:eu-central-1:123456789:my-sqs-queue"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:ListServices",
+                "cloudwatch:PutMetricData",
+                "ecs:ListTasks",
+                "ecs:DescribeServices",
+                "cloudwatch:GetMetricStatistics",
+                "ecs:DescribeTasks",
+                "cloudwatch:ListMetrics",
+                "ecs:DescribeClusters",
+                "ecs:ListClusters"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
