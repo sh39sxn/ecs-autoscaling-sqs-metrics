@@ -30,5 +30,3 @@ COPY ./publish-Backlog-per-Worker.sh /code
 COPY ./entrypoint.sh /etc/app/entrypoint
 RUN chmod +x /etc/app/entrypoint
 ENTRYPOINT /bin/sh /etc/app/entrypoint
-
-EXPOSE 8080
