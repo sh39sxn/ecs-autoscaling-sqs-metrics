@@ -19,7 +19,7 @@ Docker (tested Docker version 18.03.0-ce, build 0520e24)
 clone this project:
 
 ```
-git clone https://github.com/sh39sxn/mining-aion-coins.git
+git clone https://github.com/sh39sxn/ecs-autoscaling-sqs-metrics.git
 ```
 
 
